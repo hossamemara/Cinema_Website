@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg fixed-top mb-2">
+    <a class="navbar-brand" routerLinkActive='active-component'>4U</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"><i class="fas fa-bars fa-2x text-white"></i></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li  class="nav-item active">
+                <a *ngIf="sessionActiveLogin" class="nav-link" routerLink='home' routerLinkActive='active-component'>Home</a>
+            </li>
+            <li  class="nav-item">
+                <a *ngIf="sessionActiveLogin" class="nav-link" routerLink='movies' routerLinkActive='active-component'>movies</a>
+            </li>
+            <li  class="nav-item">
+                <a *ngIf="sessionActiveLogin" class="nav-link" routerLink='tvshow' routerLinkActive='active-component'>Tv Show</a>
+            </li>
+            <li  class="nav-item">
+                <a *ngIf="sessionActiveLogin" class="nav-link" routerLink='people' routerLinkActive='active-component'>People</a>
+            </li>
+        
+            <li  class="nav-item">
+                <a *ngIf="sessionActiveLogin" class="nav-link" routerLink='network' routerLinkActive='active-component'>Favorites</a>
+
+            </li>
+
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a   *ngIf="!sessionActiveLogin" class="nav-link" routerLink='signup' routerLinkActive='active-component'>Signup</a>
+            </li>
+            <li class="nav-item" >
+                <a *ngIf="!sessionActiveLogin" class="nav-link" routerLink='login' routerLinkActive='active-component'>Login</a>
+            </li>
+            <li class="nav-item">
+                
+                <a  *ngIf="sessionActiveLogin" class="nav-link" (click)="logOut()">{{firstName}} {{lastName}}<i class="ml-2 fas fa-sign-out-alt"></i></a>
+            </li>
+
+        </ul>
+    </div>
+
+</nav>

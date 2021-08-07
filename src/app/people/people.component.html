@@ -1,0 +1,44 @@
+<input class="form-control site-search"  *ngIf="loadingDone" [(ngModel)]="searchText" placeholder="Search ... e.g Scarlett Johansson">
+
+<div class="row my-5">
+    <div class="col-xl-4 col-lg-3 col-md-4 col-sm-4">
+        <div class="item">
+            <div class="item">
+                <hr class="bg-09c w-25 m-0 my-2">
+                
+                <h2>Trending</h2>
+                <h2>Actors</h2>
+                <h2>To Watch Now</h2>
+                <hr class="bg-09c w-100">
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 mb-2 mb-2 my-2" *ngFor="let people of peoples | paginate: { itemsPerPage: 10, currentPage: p } | search:searchText  ">
+        <div class="item text-center">
+            <div class="poster position-relative">
+                <img src="https://image.tmdb.org/t/p/w500/{{people.profile_path}}"
+                    class="mb-2 img-fluid"
+                    
+                    >
+                    <div class="poster-cover position-absolute">
+                        <div class="people-details-icon">
+                            <i class="fas fa-info-circle fa-2x"
+                            routerLink='/actor/person/{{people.id}}'></i>
+                        </div>
+                    </div>
+             
+            </div>
+            <h6 class="mb-2" routerLink='/actor/person/{{people.id}}'>{{people.name}}{{people.title}}</h6>
+            
+
+        </div>
+    </div>
+
+
+</div>
+
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+
+<ngx-spinner bdColor="#08090A" size="default" type="ball-newton-cradle">  
+</ngx-spinner>

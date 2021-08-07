@@ -1,0 +1,16 @@
+@import '../../styles.scss';
+.navbar
+{
+background-color: rgb(3, 8, 14);
+    .nav-link,.navbar-brand
+{
+    color: $fontColor;
+    cursor: pointer;
+
+}
+}
+.active-component
+{
+    border-bottom: 1px greenyellow solid;
+    transition: 0.5s all ease-in-out;
+}

@@ -1,0 +1,29 @@
+<input class="form-control site-search" *ngIf="loadingDone" [(ngModel)]="searchText" placeholder="Search Favorites e.g Cruella">
+
+<div class="row my-5">
+    <div class="col-xl-4 col-lg-3 col-md-4 col-sm-4">
+        <div class="item">
+            <hr class="bg-09c w-25 m-0 my-2">
+            <h2>Trending</h2>
+            <h2>Favorites</h2>
+            <h2>To Watch Now</h2>
+            <hr class="bg-09c w-100">
+        </div>
+    </div>
+    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 mb-2 mb-2 my-2" *ngFor="let i=index;let favorite of favorites | search:searchText ">
+        <div class="item text-center">
+            <div class="poster position-relative">
+                <img src="{{favorite.imgUrl}}" class="img-fluid" 
+                >
+                <h6 class="my-2">{{favorite.movieName}}</h6>
+                
+            </div>
+        </div>
+        
+        
+    </div>
+
+
+</div>
+<ngx-spinner bdColor="#08090A" size="default" type="ball-newton-cradle">
+</ngx-spinner>

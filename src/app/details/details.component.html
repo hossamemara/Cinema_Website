@@ -1,0 +1,24 @@
+<ngx-spinner bdColor="#08090A" size="large" type="ball-scale-multiple">
+</ngx-spinner>
+<div class="row my-4">
+    <div class="col-md-4">
+        <div>
+            <img src="https://image.tmdb.org/t/p/w500/{{trendingDetails.poster_path}}" class="w-100">
+
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div>
+            <h2 class="mb-2">{{trendingDetails.name}}{{trendingDetails.title}}</h2>
+
+
+            <button class="brn btn-primary mr-2 my-3" *ngFor='let genre of genres'>{{genre.name}}</button>
+            <h4 class="text-warning mb-2">Popularity : <span class="text-info">{{trendingDetails.popularity}}</span></h4>
+
+            <h4 class="text-warning mb-2">Vote : <span class="text-info">{{trendingDetails.vote_average}}</span></h4>
+            <h4 class="text-warning mb-2">Vote Count : <span class="text-info">{{trendingDetails.vote_count}}</span></h4>
+
+            <p>{{trendingDetails.overview}}{{trendingDetails.title}}</p>
+        </div>
+    </div>
+</div>

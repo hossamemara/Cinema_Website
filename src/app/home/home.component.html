@@ -1,0 +1,92 @@
+<ngx-spinner bdColor="#08090A" size="default" type="ball-newton-cradle">
+</ngx-spinner>
+<input class="form-control site-search" *ngIf="loadingDone" [(ngModel)]="searchText"
+    placeholder="Search Movies or TVShow">
+
+<div class="row my-5">
+
+    <div class="col-xl-4 col-lg-3 col-md-4 col-sm-4">
+        <div class="item">
+            <hr class="bg-09c w-25 m-0 my-2">
+            <h2>Trending</h2>
+            <h2>Movies</h2>
+            <h2>To Watch Now</h2>
+            <hr class="bg-09c w-100">
+        </div>
+    </div>
+    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 mb-2 mb-2 my-2"
+        *ngFor="let movie of trendingMovies | search:searchText ">
+
+        <div class="item text-center">
+            <div class="poster position-relative">
+                <div class="poster-cover position-absolute">
+                    <div class="vote-average position-absolute">
+                        {{movie.vote_average}}
+                    </div>
+                    <div class="favorite position-absolute">
+                        <i class="fas fa-heart fa-2x"
+                            (click)="addSuccessToaster(movie.title);addFavorites(movie.title,movie.id,movie.poster_path,movie.media_type)"></i>
+                    </div>
+                    <div class="details-icon">
+                        <i class="fas fa-info-circle fa-2x" routerLink='/details/{{movie.media_type}}/{{movie.id}}'></i>
+                    </div>
+                </div>
+
+
+                <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" class="img-fluid w-100">
+
+
+             
+
+            </div>
+            <h6 class="my-2" routerLink='/details/{{movie.media_type}}/{{movie.id}}'>{{movie.title}}</h6>
+
+
+        </div>
+    </div>
+
+
+</div>
+
+
+<hr class="bg-yellow w-50 h-1">
+<div class="row my-5">
+    <div class="col-xl-4 col-lg-3 col-md-4 col-sm-4">
+        <div class="item">
+            <div class="item">
+                <hr class="bg-09c w-25 m-0 my-2">
+                <h2>Trending</h2>
+                <h2>TV Show</h2>
+                <h2>To Watch Now</h2>
+                <hr class="bg-09c w-100">
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 mb-2 mb-2 my-2"
+        *ngFor="let tvshow of trendingTvShow | search:searchText ">
+        <div class="item text-center">
+            <div class="poster position-relative">
+                <div class="poster-cover position-absolute">
+                    <div class="vote-average position-absolute">
+                        {{tvshow.vote_average}}
+                    </div>
+                    <div class="favorite position-absolute">
+                        <i class="fas fa-heart fa-2x"
+                            (click)="addSuccessToaster(tvshow.name);addFavorites(tvshow.name,tvshow.id,tvshow.poster_path,tvshow.media_type)"></i>
+                    </div>
+                    <div class="details-icon">
+                        <i class="fas fa-info-circle fa-2x"
+                            routerLink='/details/{{tvshow.media_type}}/{{tvshow.id}}'></i>
+                    </div>
+                </div>
+                <img src="https://image.tmdb.org/t/p/w500/{{tvshow.poster_path}}" class="img-fluid w-100">
+
+            </div>
+
+            <h6 class="my-2" routerLink='/details/{{tvshow.media_type}}/{{tvshow.id}}'>{{tvshow.name}}</h6>
+
+        </div>
+    </div>
+
+
+</div>

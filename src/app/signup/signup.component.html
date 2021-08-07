@@ -1,0 +1,69 @@
+<form [formGroup]='registerForm' (ngSubmit)='registerDone()' class="mt-4">
+    <h1 class="text-info mb-3">Registeration Form</h1>
+    <div class="form-group">
+        <label for="sign-up-fn">First Name</label>
+        <input   id="sign-up-fn" type="text" class="form-control my-1" formControlName='first_name' placeholder="Your First Name"
+            [class.is-invalid]="registerForm.controls.first_name.invalid&&registerForm.controls.first_name.value"
+            [class.is-valid]="registerForm.controls.first_name.valid&&registerForm.controls.first_name.value">
+        <div class="text-danger"
+            *ngIf="registerForm.get('first_name')?.errors!=null && (registerForm.get('first_name')?.touched || registerForm.get('first_name')?.value)">
+            <p *ngIf="registerForm.get('first_name')?.errors?.required">First Name is Required</p>
+            <p *ngIf="registerForm.get('first_name')?.errors?.minlength">First Name Min Length is 3</p>
+            <p *ngIf="registerForm.get('first_name')?.errors?.maxlength">First Name Max Length is 10</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="sign-up-ln">Last Name</label>
+        <input id="sign-up-ln" type="text" placeholder="Your Last Name"
+            [class.is-invalid]="registerForm.controls.last_name.invalid&&registerForm.controls.last_name.value"
+            [class.is-valid]="registerForm.controls.last_name.valid&&registerForm.controls.last_name.value"
+            class="form-control my-1" formControlName='last_name'>
+        <div class="text-danger"
+            *ngIf="registerForm.get('last_name')?.errors!=null && (registerForm.get('last_name')?.touched || registerForm.get('last_name')?.value)">
+            <p *ngIf="registerForm.get('last_name')?.errors?.required">Last Name is Required</p>
+            <p *ngIf="registerForm.get('last_name')?.errors?.minlength">Last Name Min Length is 3</p>
+            <p *ngIf="registerForm.get('last_name')?.errors?.maxlength">Last Name Max Length is 10</p>
+        </div>
+
+
+    </div>
+    <div class="form-group">
+        <label for="sign-up-mail">Email</label>
+        <input id="sign-up-mail" type="email" class="form-control my-1" formControlName='email' placeholder="eg. example@example.example"
+            [class.is-invalid]="registerForm.controls.email.invalid&&registerForm.controls.email.value"
+            [class.is-valid]="registerForm.controls.email.valid&&registerForm.controls.email.value">
+        <div class="text-danger"
+            *ngIf="registerForm.get('email')?.errors && (registerForm.get('email')?.touched || registerForm.get('email')?.value)">
+            <p *ngIf="registerForm.get('email')?.errors?.required">Email is Required</p>
+            <p *ngIf="registerForm.get('email')?.errors?.pattern">Enter Email eg. example@example.example</p>
+        </div>
+
+    </div>
+    <div class="form-group">
+        <label for="sign-up-pass">Password</label>
+        <input id="sign-up-pass" type="password" class="form-control my-1" formControlName='password'
+            placeholder="Capital & Small Characters also Letters or Special Characters"
+            [class.is-invalid]="registerForm.controls.password.invalid&&registerForm.controls.password.value"
+            [class.is-valid]="registerForm.controls.password.valid&&registerForm.controls.password.value">
+        <div class="text-danger"
+            *ngIf="registerForm.get('password')?.errors && (registerForm.get('password')?.touched || registerForm.get('password')?.value)">
+            <p *ngIf="registerForm.get('password')?.errors?.required">Password is Required</p>
+            <p *ngIf="registerForm.get('password')?.errors?.pattern">Please Enter Capital & Small Characters also
+                Letters or Special Char.</p>
+        </div>
+
+    </div>
+    <div class="form-group">
+        <div class="w-60">
+
+            <button class="btn btn-outline-info m-auto w-100" [disabled]='registerForm.invalid' type="submit">Sign Up</button>
+        </div>
+        <div class="w-60 py-2">
+            <p class="text-white w-100 text-center">Already Have User? <a routerLink='/login' class="text-white">Sign In</a></p>
+        </div>
+    </div>
+
+
+   
+
+</form>
